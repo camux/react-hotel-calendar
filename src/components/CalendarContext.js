@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const CalendarContext = React.createContext({})
+const CalendarContext = React.createContext({});
 
-export const CalendarProvider = CalendarContext.Provider
-export const CalendarConsumer = CalendarContext.Consumer
-export default CalendarContext
+export const CalendarProvider = CalendarContext.Provider;
+export const CalendarConsumer = CalendarContext.Consumer;
+export default CalendarContext;

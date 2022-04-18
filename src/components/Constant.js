@@ -1,3 +1,3 @@
 export const ItemTypes = {
-    BOOKING: 'booking',
-}
+  BOOKING: "booking",
+};

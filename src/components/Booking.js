@@ -16,6 +16,8 @@ function Booking(props) {
     }),
   });
 
+  console.log(" isDragging ? ...", isDragging);
+
   // generate random background color for a booking
   const bgColor = () => {
     let h =

@@ -3,13 +3,13 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import "./../assets/styles/style.scss";
 
 import Room from "./Room";
-import Booking from "./Booking";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import CalendarContext from "./CalendarContext";
 import BookingHelper from "../helpers/BookingHelper";
 import BookingPopup from "./popups/BookingPopup";
-import FilterCalendar from "./FilterCalendar";
+// import Booking from "./Booking";
+// import FilterCalendar from "./FilterCalendar";
 
 class Calender extends Component {
   constructor(props) {
