@@ -1,37 +1,37 @@
 const rooms = [
   {
     id: 1,
-    title: "Studio",
-    category: "Single",
+    title: "HAB. 203",
+    category: "DOUBLE DELUXE",
+    status: "clean",
     roomCount: 1,
     tag: ["non-ac", "single"],
   },
   {
     id: 2,
-    title: "Double",
-    category: "Royal",
+    title: "HAB. 204",
+    category: "STANDARD",
+    status: "dirty",
     roomCount: 2,
     tag: ["ac", "garden-view"],
   },
   {
     id: 3,
-    title: "Executive Suite",
+    title: "HAB. 205",
+    category: "STANDARD",
+    status: "clean",
   },
   {
     id: 4,
-    title: "Presidential Suite",
+    title: "HAB. 206",
+    category: "SUPERIOR",
+    status: "dirty",
   },
   {
     id: 5,
-    title: "Queen sized",
-  },
-  {
-    id: 6,
-    title: "King sized",
-  },
-  {
-    id: 7,
-    title: "Hollywood Twin Room",
+    title: "HAB. 207",
+    category: "SUPERIOR",
+    status: "clean",
   },
 ];
 
