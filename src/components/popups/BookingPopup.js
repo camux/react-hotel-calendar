@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
-import CalendarContext from "./../CalendarContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import BookingHelper from "./../../helpers/BookingHelper";
+
+import BookingHelper from "helpers/BookingHelper";
+import CalendarContext from "components/CalendarContext";
 
 function BookingPopup(props) {
   // enter default from_date

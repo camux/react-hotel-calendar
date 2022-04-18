@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
-import "./../assets/styles/style.scss";
-
-import Room from "./Room";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+
+import Room from "./Room";
 import CalendarContext from "./CalendarContext";
 import BookingHelper from "../helpers/BookingHelper";
 import BookingPopup from "./popups/BookingPopup";
+import "assets/styles/style.scss";
 // import Booking from "./Booking";
 // import FilterCalendar from "./FilterCalendar";
 

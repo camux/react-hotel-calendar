@@ -1,9 +1,11 @@
 import React from "react";
+
+import Calendar from "./components/Calendar";
+import BookingHelper from "./helpers/BookingHelper";
 import "./App.css";
-import Calender from "./components/Calender";
+
 import bookingData from "./data/bookings";
 import roomData from "./data/rooms";
-import BookingHelper from "./helpers/BookingHelper";
 
 function App() {
   let rooms = roomData;
@@ -31,12 +33,12 @@ function App() {
 
   return (
     <div className="App">
-      <Calender
+      <Calendar
         rooms={rooms}
         bookings={bookings}
         bookingDataCallback={dataCallback}
         viewStartDate={viewStartDate}
-      ></Calender>
+      />
     </div>
   );
 }
