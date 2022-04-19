@@ -9,6 +9,7 @@ const guid = () => {
   }
   return s4() + "-" + s4() + "-" + s4();
 };
+
 /**
  * Format in yyyy-mm-dd format
  * @param {*} date
@@ -31,6 +32,12 @@ const numberOfDaysBetweenDates = (date1, date2) => {
       Math.abs((date1.getTime() - date2.getTime()) / (60 * 60 * 24 * 1000))
     ) + 1
   );
+};
+
+const durationOfDays = (to_date, from_date) => {
+  const from_ = new Date(from_date).getTime();
+  const to_ = new Date(to_date).getTime();
+  return (to_ - from_) / (60 * 60 * 24 * 1000) + 1;
 };
 
 /**
@@ -165,6 +172,7 @@ const helpers = {
   moveBooking: moveBooking,
   guid: guid,
   formatDate: formatDate,
+  durationOfDays: durationOfDays,
 };
 
 export default helpers;

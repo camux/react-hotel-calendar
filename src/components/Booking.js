@@ -6,6 +6,7 @@ import { ItemTypes } from "./Constant";
 import CalendarContext from "./CalendarContext";
 import colorsStatus from "./colorsStatus";
 import "./Booking.css";
+import helper from "helpers/BookingHelper";
 
 function Booking(props) {
   // load default context
@@ -55,15 +56,12 @@ function Booking(props) {
     return title;
   };
 
-  // calculate number of days for which booking is done
-  let number_of_days =
-    (new Date(book.to_date).getTime() - new Date(book.from_date).getTime()) /
-      (60 * 60 * 24 * 1000) +
-    1;
+  // calculate number of days for booking
+  const booking_days = helper.durationOfDays(book.to_date, book.from_date);
 
-  if (number_of_days > 0) {
+  if (booking_days > 0) {
     let style = {
-      width: number_of_days * 100 + "%",
+      width: booking_days * 100 + "%",
       backgroundColor: colorsStatus[book.status],
     };
     return (

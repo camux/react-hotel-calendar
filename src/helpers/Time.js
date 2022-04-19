@@ -1,4 +1,4 @@
-Date.prototype.monthNames = [
+export const monthNames = [
   "January",
   "February",
   "March",
@@ -13,9 +13,10 @@ Date.prototype.monthNames = [
   "December",
 ];
 
-Date.prototype.getMonthName = function () {
-  return this.monthNames[this.getMonth()];
+export const getMonthName = function (rawDate) {
+  return monthNames[rawDate.getMonth()];
 };
-Date.prototype.getShortMonthName = function () {
-  return this.getMonthName().substr(0, 3);
+
+export const getShortMonthName = function (rawDate) {
+  return getMonthName(rawDate).substr(0, 3);
 };

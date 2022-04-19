@@ -2,16 +2,20 @@ import React, { Component } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import date from "date-and-time";
 
 import Room from "./Room";
 import CalendarContext from "./CalendarContext";
-import BookingHelper from "../helpers/BookingHelper";
+import helper from "../helpers/BookingHelper";
 import BookingPopup from "./popups/BookingPopup";
+import { getMonthName, getShortMonthName } from "helpers/Time";
 import "assets/styles/style.scss";
+import "./Calendar.css";
 // import Booking from "./Booking";
 // import FilterCalendar from "./FilterCalendar";
+const fmtDate = "YYYY-MM-DD";
 
-class Calender extends Component {
+class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,50 +60,23 @@ class Calender extends Component {
     });
   }
 
-  /**
-   * Render thead of the calendar table
-   */
+  // Render thead of the calendar table
   renderHeaderDate() {
-    let datesHtml = this.state.dates.map((date) => {
-      // @todo move it to common helper
-      Date.locale = {
-        en: {
-          month_names: [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
-          ],
-          month_names_short: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-        },
-      };
+    let datesHtml = this.state.dates.map((rawDate) => {
+      const today = date.format(new Date(), fmtDate);
+      const fdate = date.format(rawDate, fmtDate);
+      let isToday = "";
+      if (today === fdate) {
+        isToday = "-today";
+      }
 
       return (
-        <th key={date.getTime()}>
-          <span className="r-calendar-head-date">{date.getDate()}</span>
-          <div className="r-calendar-head-month">
-            {Date.locale.en.month_names_short[date.getMonth()]}
+        <th className={`calendar-th-date${isToday}`} key={rawDate.getTime()}>
+          <span className={`calendar-head-date${isToday}`}>
+            {rawDate.getDate()}
+          </span>
+          <div className={`calendar-head-month${isToday}`}>
+            {getShortMonthName(rawDate)}
           </div>
         </th>
       );
@@ -109,7 +86,7 @@ class Calender extends Component {
       <thead>
         <tr>
           <th>
-            <div className="text-right">ROOMS</div>
+            <div className="calendar-head-rooms">ROOMS</div>
           </th>
           {datesHtml}
         </tr>
@@ -151,7 +128,7 @@ class Calender extends Component {
    * @param {*} newEndDate
    */
   actionMoveBooking(singleBooking, room, newStartDate, newEndDate) {
-    let allBookings = BookingHelper.moveBooking(
+    let allBookings = helper.moveBooking(
       singleBooking,
       room,
       newStartDate,
@@ -174,7 +151,7 @@ class Calender extends Component {
    */
   actionCreateBooking(singleBooking) {
     if (
-      BookingHelper.canExistBooking(
+      helper.canExistBooking(
         singleBooking,
         singleBooking.room_id,
         singleBooking.from_date,
@@ -198,7 +175,7 @@ class Calender extends Component {
    * @param {*} newEndDate
    */
   actionCanExistBooking(singleBooking, room, newStartDate, newEndDate) {
-    return BookingHelper.canExistBooking(
+    return helper.canExistBooking(
       singleBooking,
       room,
       newStartDate,
@@ -270,4 +247,4 @@ class Calender extends Component {
   }
 }
 
-export default Calender;
+export default Calendar;
