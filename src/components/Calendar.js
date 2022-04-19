@@ -6,9 +6,11 @@ import date from "date-and-time";
 
 import Room from "./Room";
 import CalendarContext from "./CalendarContext";
-import helper from "../helpers/BookingHelper";
+import GroupTags from "components/GroupTags";
 import ModalBooking from "./ModalBooking";
 import { getShortMonthName } from "helpers/Time";
+import colorsStatus from "./colorsStatus";
+import helper from "helpers/BookingHelper";
 import "assets/styles/style.scss";
 import "./Calendar.css";
 
@@ -180,6 +182,7 @@ function Calendar(props) {
   return (
     <CalendarContext.Provider value={contextValue}>
       <div className="r-calendar">
+        <GroupTags tags={colorsStatus} />
         <DndProvider backend={HTML5Backend}>
           <ScrollContainer className="scroll-container" ignoreElements="td">
             <table className="table table-striped r-calendar-main-table">
