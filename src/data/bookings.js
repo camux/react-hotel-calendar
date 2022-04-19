@@ -2,14 +2,15 @@ const data = [
   {
     id: 1,
     room_id: 2,
+    room: "HAB. 204",
     guest_name: "JHON SMITH",
     from_date: "2022-04-16",
     to_date: "2022-04-18",
     accomodation: "DOBLE",
     objective: "business",
-    unit: 2,
+    // unit: 2,
     channel: "direct",
-    registration_state: "check_in",
+    status: "check_in",
     invoice_state: "posted",
     adult_count: 2,
     child_count: 0,
@@ -27,6 +28,7 @@ const data = [
   {
     id: 2,
     room_id: 4,
+    room: "HAB. 206",
     guest_name: "SARAH PARKER",
     from_date: "2022-04-19",
     to_date: "2022-04-29",
@@ -34,10 +36,10 @@ const data = [
     objective: "tourism",
     unit: 2,
     channel: "expedia",
-    registration_state: null,
+    status: "none",
     invoice_state: null,
-    adult_count: 3,
-    child_count: 0,
+    adult_count: 2,
+    child_count: 1,
     guests: [
       {
         name: "MR. PARKER",
@@ -54,8 +56,9 @@ const data = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     room_id: 5,
+    room: "HAB. 207",
     guest_name: "CHRIS MEYER",
     from_date: "2022-04-19",
     to_date: "2022-04-22",
@@ -63,9 +66,9 @@ const data = [
     objective: "tourism",
     unit: 2,
     channel: "booking",
-    registration_state: "check_in",
+    status: "check_out",
     invoice_state: "posted",
-    adult_count: 2,
+    adult_count: 1,
     child_count: 0,
     guests: [
       {

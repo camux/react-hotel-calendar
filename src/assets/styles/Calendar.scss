@@ -1,5 +1,5 @@
 $primaryBG: rgb(143, 180, 204);
-$primaryBG: rgb(98, 184, 224);
+$secondaryBG: rgb(166, 173, 176);
 
 body {
   font-family: "Roboto", sans-serif;
@@ -49,12 +49,12 @@ body {
 .r-calendar .r-calendar-main-table tbody tr:nth-of-type(odd),
 .r-calendar-main-table thead th:nth-child(odd),
 #guest-list-table.table-striped tbody tr:nth-of-type(odd) {
-  background: rgba($primaryBG, 0.11);
+  background: rgba($secondaryBG, 0.1);
 }
 
 .r-calendar-main-table thead,
 .r-calendar-main-table tr th:hover {
-  background: rgba($primaryBG, 0.4);
+  background: rgba($secondaryBG, 0.2);
 }
 
 .r-calendar-main-table thead th {

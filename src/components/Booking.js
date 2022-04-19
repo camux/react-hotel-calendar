@@ -1,16 +1,20 @@
 import React, { useContext } from "react";
 import { useDrag } from "react-dnd";
+import { Popup } from "semantic-ui-react";
 
 import { ItemTypes } from "./Constant";
 import CalendarContext from "./CalendarContext";
+import colorsStatus from "./colorsStatus";
+import "./Booking.css";
 
 function Booking(props) {
   // load default context
   const context = useContext(CalendarContext);
+  const { book } = props;
 
   // enable dragging of component
   const [{ isDragging }, drag] = useDrag({
-    item: { singleBooking: props.book },
+    item: { singleBooking: book },
     type: ItemTypes.BOOKING,
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
@@ -19,64 +23,66 @@ function Booking(props) {
 
   console.log(" isDragging ? ...", isDragging);
 
-  // generate random background color for a booking
-  const bgColor = () => {
-    let h =
-      (new Date(props.book.from_date).getTime() * 21 * props.book.room_id) %
-      255;
-    return "hsla(" + h + ", 29%, 60%, 0.9)";
-  };
-
   // get inner content of the booking
   const getContent = () => {
-    let title =
-      "AD-" + props.book.adult_count + " CD-" + props.book.child_count;
-    let guests = props.book.guests;
+    let title;
+    let guests = book.guests;
     if (guests.length > 0) {
       title = guests[0].name;
       if (guests.length > 1) {
-        title = title + "(+" + (guests.length - 1) + "more)";
+        title = `${title} (${guests.length})`;
       }
     }
-    return title;
+    return (
+      <p className="booking-content" key={book.id}>
+        {title}
+      </p>
+    );
   };
 
   // get title attribute of the booking
-  const getTitle = () => {
-    let title = [];
-    let guests = props.book.guests;
-    for (let aa = 0; aa < guests.length; aa++) {
-      title[aa] = "- " + guests[aa].name + "(" + guests[aa].age + "y)";
-    }
-    return title.join("\n") + "\n  for " + number_of_days + " days";
+  const getPopupContent = () => {
+    const { guest_name, accomodation, from_date, to_date, channel } = book;
+    let title = (
+      <div className="popup-div-content">
+        <p className="popup-div-content-acco">{accomodation}</p>
+        <p className="popup-div-content-guest">{guest_name}</p>
+        <p className="popup-div-content-from-date">Desde : {from_date}</p>
+        <p className="popup-div-content-to-date">Hasta: {to_date}</p>
+        <p className="popup-div-content-channel">Canal: {channel}</p>
+      </div>
+    );
+    return title;
   };
 
   // calculate number of days for which booking is done
   let number_of_days =
-    (new Date(props.book.to_date).getTime() -
-      new Date(props.book.from_date).getTime()) /
+    (new Date(book.to_date).getTime() - new Date(book.from_date).getTime()) /
       (60 * 60 * 24 * 1000) +
     1;
 
   if (number_of_days > 0) {
     let style = {
       width: number_of_days * 100 + "%",
-      backgroundColor: bgColor(),
+      backgroundColor: colorsStatus[book.status],
     };
     return (
       <div
         onClick={(event) => {
-          context.actionOpenPopup(props.book);
+          context.actionOpenPopup(book);
           event.stopPropagation();
           event.preventDefault();
         }}
         ref={drag}
-        className="booking"
+        className="div-booking"
         style={style}
       >
-        <div title={getTitle()} className="booking-inner">
-          {getContent()}
-        </div>
+        <Popup
+          key={book.id}
+          header={book.room}
+          content={getPopupContent()}
+          trigger={getContent()}
+        />
       </div>
     );
   } else {

@@ -2,6 +2,7 @@ import React from "react";
 
 import Booking from "./Booking";
 import RoomDate from "./RoomDate";
+import "./Room.css";
 
 /**
  * Render a single room, i.e. single row in a table
@@ -38,7 +39,9 @@ function Room(props) {
   return (
     <tr key={props.room.id}>
       <td>
-        <div>{props.room.title}</div>
+        <div className="room-td-div">
+          <span className="room-td-span">{props.room.title}</span>
+        </div>
       </td>
       {daysTd}
     </tr>

@@ -1,0 +1,25 @@
+.div-booking {
+  height: 100% !important;
+  display: block ruby;
+  justify-content: center;
+}
+
+.booking-content {
+  font-size: 16px;
+  height: 100% !important;
+  color: white !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+.popup-div-content p {
+  color: rgb(5, 26, 51);
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.popup-div-content-guest {
+  font-weight: bold;
+}
