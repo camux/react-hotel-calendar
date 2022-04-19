@@ -11,6 +11,7 @@ import CalendarContext from "./CalendarContext";
 function RoomDate(props) {
   // load default context
   const context = useContext(CalendarContext);
+  const { day, room, cellWidth, children } = props;
 
   // enable drop
   const [{ isOver }, drop] = useDrop({
@@ -19,8 +20,8 @@ function RoomDate(props) {
     drop: (singleBookingDraggableItem) => {
       context.actionMoveBooking(
         singleBookingDraggableItem.singleBooking,
-        props.room.id,
-        props.day
+        room.id,
+        day
       );
       // context.actionOpenPopup(singleBookingDraggableItem.singleBooking);
     },
@@ -33,20 +34,20 @@ function RoomDate(props) {
 
   const clickHandler = (event) => {
     context.actionOpenPopup({
-      room_id: props.room.id,
-      from_date: props.day,
-      to_date: props.day,
+      room_id: room.id,
+      from_date: day,
+      to_date: day,
     });
   };
 
   return (
     <td
       ref={drop}
-      key={props.day.getTime()}
-      style={{ width: props.cellWidth + "px" }}
+      key={day.getTime()}
+      style={{ width: cellWidth + "px" }}
       onClick={clickHandler}
     >
-      {props.children}
+      {children}
     </td>
   );
 }

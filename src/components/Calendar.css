@@ -1,3 +1,22 @@
+.r-calendar {
+  max-width: 90%;
+  margin: 20px auto;
+}
+
+.r-calendar-main-table td {
+  padding: 0px 0;
+  height: 40px;
+  line-height: 3em;
+  min-width: 70px;
+  max-width: 70px;
+  border: 0;
+}
+
+.r-calendar-main-table tr td:first-child {
+  min-width: auto;
+  max-width: initial;
+}
+
 .calendar-head-rooms {
   font-weight: bold;
   justify-content: center;
