@@ -77,6 +77,32 @@ const data = [
       },
     ],
   },
+  {
+    id: 4,
+    room_id: 3,
+    room: "HAB. 205",
+    guest_name: "JUAN VALDEZ",
+    from_date: "2022-04-21",
+    to_date: "2022-04-23",
+    accomodation: "SINGLE STANDARD",
+    objective: "tourism",
+    unit: 2,
+    channel: "booking",
+    status: "pending",
+    invoice_state: "",
+    adult_count: 2,
+    child_count: 0,
+    guests: [
+      {
+        name: "JUAN VALDEZ",
+        age: 35,
+      },
+      {
+        name: "MARGOT ROBBIE",
+        age: 30,
+      },
+    ],
+  },
 ];
 
 export default data;

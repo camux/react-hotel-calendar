@@ -1,6 +1,6 @@
 import React from "react";
 
-import Calendar from "./components/Calendar";
+import HotelCalendar from "./components/Calendar";
 import helper from "./helpers/BookingHelper";
 import "./App.css";
 
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <Calendar
+      <HotelCalendar
         rooms={roomData}
         bookings={bookingData}
         bookingDataCallback={dataCallback}
