@@ -4,10 +4,6 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "./Constant";
 import CalendarContext from "./CalendarContext";
 
-/**
- * small grid box which forms from combination of rows(room) and columns(date)
- * @param {*} props
- */
 function RoomDate(props) {
   // load default context
   const context = useContext(CalendarContext);

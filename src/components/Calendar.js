@@ -7,12 +7,11 @@ import date from "date-and-time";
 import Room from "./Room";
 import CalendarContext from "./CalendarContext";
 import helper from "../helpers/BookingHelper";
-import BookingPopup from "./popups/BookingPopup";
+import ModalBooking from "./ModalBooking";
 import { getShortMonthName } from "helpers/Time";
 import "assets/styles/style.scss";
 import "./Calendar.css";
-// import Booking from "./Booking";
-// import FilterCalendar from "./FilterCalendar";
+
 const fmtDate = "YYYY-MM-DD";
 const cellWith = 50;
 
@@ -20,7 +19,7 @@ function Calendar(props) {
   const { rooms, viewStartDate, bookingDataCallback } = props;
   const dates = fillupDates();
   let [bookingsActive, setBookingsActive] = useState(props.bookings);
-  let [popup, setPopup] = useState({
+  let [modal, setModal] = useState({
     booking: null,
     show: false,
   });
@@ -147,14 +146,14 @@ function Calendar(props) {
 
   function actionOpenPopup(booking) {
     // setBookingsActive()
-    setPopup({
+    setModal({
       booking: booking,
       show: true,
     });
   }
 
   function actionClosePopup() {
-    setPopup({
+    setModal({
       booking: null,
       show: false,
     });
@@ -170,8 +169,8 @@ function Calendar(props) {
     actionCreateBooking: actionCreateBooking,
   };
 
-  // show hide booking popup
-  const bookingPopup = popup.show && <BookingPopup data={popup} />;
+  // show hide booking modal
+  // const bookingModal =  />;
 
   // check if callback is set inorder to get booking data
   if (bookingDataCallback) {
@@ -189,7 +188,7 @@ function Calendar(props) {
             </table>
           </ScrollContainer>
         </DndProvider>
-        {bookingPopup}
+        {modal.show && <ModalBooking data={modal} />}
       </div>
     </CalendarContext.Provider>
   );

@@ -1,46 +1,41 @@
 import React from "react";
+import date from "date-and-time";
 
 import Booking from "./Booking";
 import RoomDate from "./RoomDate";
 import "./Room.css";
 
-/**
- * Render a single room, i.e. single row in a table
- * @param {*} props
- */
 function Room(props) {
-  let daysTd = props.dates.map((day, index) => {
+  const { dates, bookings, room, cellWidth } = props;
+
+  let daysTd = dates.map((day, index) => {
     // get all booking for current day
-    let bookinksToday = props.bookings.filter((singleBook) => {
-      let from_date = new Date(singleBook.from_date);
+    let bookingsDay = bookings.filter((booking) => {
+      let from_date = new Date(booking.from_date);
+      from_date = date.addDays(from_date, 1);
       return from_date.toDateString() === day.toDateString() &&
-        singleBook.room_id === props.room.id
+        booking.room_id === room.id
         ? true
         : false;
     });
 
     // get all booking jsx code for current day
-    let bookinksTodayJsx = bookinksToday.map((singleBook) => {
-      return <Booking book={singleBook} key={singleBook.id} />;
+    const bookingsTarget = bookingsDay.map((booking) => {
+      return <Booking book={booking} key={booking.id} />;
     });
 
     return (
-      <RoomDate
-        key={index}
-        day={day}
-        room={props.room}
-        cellWidth={props.cellWidth}
-      >
-        {bookinksTodayJsx}
+      <RoomDate key={index} day={day} room={room} cellWidth={cellWidth}>
+        {bookingsTarget}
       </RoomDate>
     );
   });
 
   return (
-    <tr key={props.room.id}>
+    <tr key={room.id}>
       <td>
         <div className="room-td-div">
-          <span className="room-td-span">{props.room.title}</span>
+          <span className="room-td-span">{room.title}</span>
         </div>
       </td>
       {daysTd}
